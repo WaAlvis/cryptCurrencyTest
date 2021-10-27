@@ -23,17 +23,17 @@ class HomeViewModel extends ViewModel<HomeStatus> {
   }
 
   void getListCripto() async {
-    // status = status.copyWith(isLoading: true);
-
+    status = status.copyWith(isLoading: true);
     final listCriptoResponse = await _interactor.getListCriptos();
 
     if (listCriptoResponse is IdtSuccess<List<CurrencyModel>?>) {
       status = status.copyWith(
-          listCriptoResponse: listCriptoResponse.body); // Status reasignacion
+          listCripto: listCriptoResponse.body); // Status reasignacion
     } else {
       final erroRes = CurrencyError as IdtFailure<CurrencyError>;
       print('Error **${erroRes.message}');
-      UnimplementedError();
+      event = ErrorEvent("Ocurrio un problema al cargar la informacion");
     }
+    status = status.copyWith(isLoading: false);
   }
 }
