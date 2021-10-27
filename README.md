@@ -1,4 +1,4 @@
-# prueb_tecnica_cryptocurrency
+# prueb_tecnica_cryptocurrency_API
 
 Una prueba tecnica Api CryptoCurrency
 
